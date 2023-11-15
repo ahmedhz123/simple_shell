@@ -38,12 +38,12 @@
 extern char **environ;
 
 /**
- * liststr - singly linked list
+ * struct liststr - singly linked list
  *
  * @num: the number field
  * @str: a string
  * @next: points to the next node
- * 
+ *
  * description: linked lists
 */
 
@@ -63,7 +63,7 @@ typedef struct liststr
  * @path: a string path for the cuurent command
  * @argc: the argument count
  * @line_count: the error count
- * @lincount_flag: if no count this line of input
+ * @linecount_flag: if no count this line of input
  * @fname: the program filename
  * @env: linked list local copy of environ
  * @err_num: the error code for exit()s
@@ -73,9 +73,9 @@ typedef struct liststr
  * @env_changed: on if environ was changed
  * @status: the return status of the last exec'd command
  * @cmd_buf: address of pointer to cmd_buf, on if chaining
- * @cmd_buf_type: CDM_type ||, &&, semicolon 
+ * @cmd_buf_type: CDM_type ||, &&, semicolon
  * @readfd: the fd from which to read line input
- * @hiscount: the history line number count
+ * @histcount: the history line number count
 */
 
 typedef struct passinfo
