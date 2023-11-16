@@ -56,7 +56,7 @@ int _mycd(info_t *info)
 		else
 			chdir_ret = chdir(dir);
 	}
-	else if (_strcmp(info->argv[1], '-') == 0)
+	else if (_strcmp(info->argv[1], 45) == 0)
 	{
 		if (!_getenv(info, "OLDPWD"))
 		{
@@ -98,30 +98,5 @@ int _myhelp(info_t *info)
 	_puts("help call works, Function not yet implemented\n");
 	if (0)
 		_puts(*arg_array);
-	return (0);
+	return (0)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

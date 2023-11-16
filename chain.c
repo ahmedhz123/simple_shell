@@ -115,7 +115,7 @@ int replace_alias(info_t *info)
 int replace_vars(info_t *info)
 {
 	int i = 0;
-	list_t *node;
+	list_t *node = NULL;
 
 	for (i = 0; info->argv[i]; i++)
 	{
