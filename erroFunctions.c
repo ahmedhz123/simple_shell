@@ -86,6 +86,6 @@ int _putsfd(char *str, int fd)
 	if (!str)
 		return (0);
 	while (*str)
-		i += _putfd(*s++, fd);
+		i += _putfd(*str++, fd);
 	return (i);
 }

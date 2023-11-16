@@ -101,7 +101,7 @@ size_t print_list_str(const list_t *h)
 	while (h)
 	{
 		_puts(h->str ? h->str : "(nil)");
-		_puts('\n');
+		_putchar('\n');
 		h = h->next;
 		i++;
 	}
@@ -118,9 +118,9 @@ size_t print_list_str(const list_t *h)
  * Return: 0 Always (success)
 */
 
-int delete_nodeint_at_index(listint_t **head, unsigned int index)
+int delete_nodeint_at_index(list_t **head, unsigned int index)
 {
-	listint_t *node, *ptr;
+	list_t *node, *ptr;
 	unsigned int i = 0;
 
 	if (!*head || !head)

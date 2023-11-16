@@ -84,7 +84,7 @@ int read_history(info_t *info)
 		return (0);
 	buf = malloc(sizeof(char) * (fsize + 1));
 	if (!buf)
-		return (NULL);
+		return (0);
 	rdlen = read(fd, buf, fsize);
 	buf[fsize] = 0;
 	if (rdlen <= 0)
@@ -124,10 +124,10 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 	if (info->history)
 		node = info->history;
-	add_node_end(&node, buf, lincount);
+	add_node_end(&node, buf);
 
 	if (!info->history)
-		info->histroy = node;
+		info->history = node;
 	return (0);
 }
 
@@ -141,12 +141,12 @@ int build_history_list(info_t *info, char *buf, int linecount)
 
 int renumber_history(info_t *info)
 {
-	list_t *node = info->histroy;
+	list_t *node = info->history;
 	int i = 0;
 
 	while (node)
 	{
-		node->num = i++;
+		node->len = i++;
 		node = node->next;
 	}
 	return (info->histcount = i);

@@ -108,7 +108,7 @@ int _erratoi(char *s)
 void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
-	eputs(": ");
+	_eputs(": ");
 	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(info->argv[0]);
@@ -153,7 +153,7 @@ int print_d(int input, int fd)
 		}
 		current %= i;
 	}
-	__puthcar(current + '0');
+	__putchar(current + '0');
 	count++;
 	return (count);
 }

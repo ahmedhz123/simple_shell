@@ -49,7 +49,7 @@ extern char **environ;
 
 typedef struct liststr
 {
-	int num;
+	int len;
 	char *str;
 	struct liststr *next;
 } list_t;
@@ -128,7 +128,7 @@ char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
 char *_strdup(char *str);
-char *start_with(const char *haystack, const char *needle);
+char *starts_with(const char *haystack, const char *needle);
 char **strtow2(char *str, char d);
 char **strtow(char *str, char *d);
 char *_getenv(info_t *info, const char *name);
@@ -147,7 +147,7 @@ char **list_to_strings(list_t *head);
 ssize_t get_node_index(list_t *head, list_t *node);
 list_t *node_starts_with(list_t *node, char *prefix, char c);
 size_t print_list_str(const list_t *h);
-int delete_nodeint_at_index(listint_t **head, unsigned int index);
+int delete_node_at_index(list_t **head, unsigned int index);
 int _myhelp(info_t *info);
 int _mycd(info_t *info);
 int _myexit(info_t *info);
@@ -173,7 +173,7 @@ int is_cmd(info_t *info, char *path);
 char *dup_chars(char *pathstr, int start, int stop);
 char *find_path(info_t *info, char *pathstr, char *cmd);
 int is_chain(info_t *info, char *buf, size_t *p);
-void check_chain(info_t *info, char *buf, size_t i, size_t len);
+void check_chain(info_t *info, char *buf, char *p, size_t i, size_t len);
 int replace_alias(info_t *info);
 int replace_vars(info_t *info);
 int replace_string(char **old, char *new);

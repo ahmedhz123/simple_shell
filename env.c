@@ -47,9 +47,9 @@ char *_getenv(info_t *info, const char *name)
 
 int _mysetenv(info_t *info)
 {
-	if (env->argc != 3)
+	if (info->argc != 3)
 	{
-		_eput("incorrect number of arguments")
+		_eputs("incorrect number of arguments");
 			return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
@@ -71,7 +71,7 @@ int _myunsetenv(info_t *info)
 
 	if (info->argc == 1)
 	{
-		_eput("too few arguments\n");
+		_eputs("too few arguments\n");
 		return (1);
 	}
 
@@ -94,7 +94,7 @@ int populate_env_list(info_t *info)
 	size_t i;
 
 	for (i = 0; environ[i]; i++)
-		add_node_end(&node, environ[i], 0);
+		add_node_end(&node, environ[i]);
 	info->env = node;
 	return (0);
 }

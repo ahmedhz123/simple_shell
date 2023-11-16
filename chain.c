@@ -42,14 +42,14 @@ int is_chain(info_t *info, char *buf, size_t *p)
  *
  * @info: the parameter struct
  * @buf: the char buffer
- * @: address of current position inbuf
+ * @p: address of current position inbuf
  * @i: starting position in buf
  * @len: length of the buf
  *
  * Return: Void
 */
 
-void check_chain(info_t *info, char *buf, size_t i, size_t len)
+void check_chain(info_t *info, char *buf, char *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
@@ -66,7 +66,7 @@ void check_chain(info_t *info, char *buf, size_t i, size_t len)
 		if (!info->status)
 		{
 			buf[i] = 0;
-			j = len
+			j = len;
 		}
 	}
 	*p = j;
@@ -124,13 +124,13 @@ int replace_vars(info_t *info)
 		if (!_strcmp(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(convert_number(info->status, 10, 0)));
+					_strdup(converter_number(info->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(info->argv[i], "$$"))
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(convert_number(gitpid(), 10, 0)));
+					_strdup(converter_number(getpid(), 10, 0)));
 			continue;
 		}
 		if (node)

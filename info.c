@@ -9,7 +9,7 @@
 void clear_info(info_t *info)
 {
 	info->arg = NULL;
-	info->argc = NULL;
+	info->argc = 0;
 	info->argv = NULL;
 	info->path = NULL;
 }
@@ -23,7 +23,7 @@ void clear_info(info_t *info)
 */
 
 void free_info(info_t *info, int all)
-{
+{	
 	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
@@ -33,7 +33,7 @@ void free_info(info_t *info, int all)
 		if (!info->cmd_buf)
 			free(info->arg);
 		if (info->env)
-			free_list(&(info->env));
+			free_list(&(list->env));
 		if (info->history)
 			free_list(&(info->history));
 		if (info->alias)
@@ -63,7 +63,7 @@ void set_info(info_t *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strow(info->arg, "  \t");
+		info->argv = strtow(info->arg, "  \t");
 		if (!info->argv)
 		{
 			info->argv = malloc(sizeof(char *) * 2);
@@ -73,7 +73,7 @@ void set_info(info_t *info, char **av)
 				info->argv[1] = NULL;
 			}
 		}
-		for (i = 0; info_argv && info->argv[i]; i++)
+		for (i = 0; info->argv && info->argv[i]; i++)
 			;
 		info->argc = i;
 
